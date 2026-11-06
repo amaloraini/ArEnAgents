@@ -1,0 +1,477 @@
+{
+ "prompt_version": "p6",
+ "templates": {
+  "team_lang": {
+   "en": "Teammates may write in English or Arabic. Always write your message in {C}.",
+   "ar": "قد يكتب زملاؤك بالعربية أو بالإنجليزية. اكتب رسالتك دائمًا باللغة {C}."
+  },
+  "fmt_free": {
+   "en": "Reply in exactly this format:\n<notes>your private reasoning, written in {R}, at most 60 words; teammates never see it</notes>\n<message>what you say to the team, written in {C}, at most 120 words\nFINAL: <answer></message>\nInclude the last line \"FINAL: <answer>\" only when you are confident about the team's final answer; replace <answer> with the answer only (no explanation, no alternatives). Keep it inside the message and write nothing after </message>.",
+   "ar": "اكتب ردك بهذا الشكل تمامًا:\n<notes>تفكيرك الخاص مكتوبًا باللغة {R}، في 60 كلمة على الأكثر، ولا يراه زملاؤك أبدًا</notes>\n<message>ما تقوله للفريق مكتوبًا باللغة {C}، في 120 كلمة على الأكثر\nالنهائي: <الإجابة></message>\nاكتب السطر الأخير «النهائي: <الإجابة>» فقط عندما تكون واثقًا من الإجابة النهائية للفريق، واستبدل <الإجابة> بالإجابة فقط (دون شرح أو بدائل). اجعله داخل الرسالة، ولا تكتب شيئًا بعد </message>."
+  },
+  "fmt_json": {
+   "en": "Reply in exactly this format:\n<notes>your private reasoning, written in {R}, at most 60 words; teammates never see it</notes>\n<message>a JSON object, at most 120 words in total, whose text values are written in {C}, with keys \"facts\" (list of facts you share), \"proposal\" (your current proposed answer, or null) and \"final\" (the team's final answer once you are confident, otherwise null)</message>",
+   "ar": "اكتب ردك بهذا الشكل تمامًا:\n<notes>تفكيرك الخاص مكتوبًا باللغة {R}، في 60 كلمة على الأكثر، ولا يراه زملاؤك أبدًا</notes>\n<message>كائن JSON لا يتجاوز 120 كلمة إجمالًا، تُكتب قيمه النصية باللغة {C}، بالمفاتيح \"المعلومات\" (قائمة بالمعلومات التي تشاركها) و\"الاقتراح\" (الإجابة التي تقترحها حاليًا، أو null) و\"النهائي\" (الإجابة النهائية للفريق عندما تكون واثقًا، وإلا null)</message>"
+  },
+  "fmt_fields": {
+   "en": "Reply in exactly this format:\n<notes>your private reasoning, written in {R}, at most 60 words; teammates never see it</notes>\n<message>at most 120 words in total, written in {C}, with these three labelled parts:\nFacts: the facts you share\nProposal: your current proposed answer, or none\nFINAL: <answer></message>\nInclude the last line \"FINAL: <answer>\" only when you are confident about the team's final answer; replace <answer> with the answer only (no explanation, no alternatives). Keep it inside the message and write nothing after </message>.",
+   "ar": "اكتب ردك بهذا الشكل تمامًا:\n<notes>تفكيرك الخاص مكتوبًا باللغة {R}، في 60 كلمة على الأكثر، ولا يراه زملاؤك أبدًا</notes>\n<message>في 120 كلمة على الأكثر إجمالًا، مكتوبة باللغة {C}، بهذه الأجزاء الثلاثة المعنونة:\nالمعلومات: المعلومات التي تشاركها\nالاقتراح: الإجابة التي تقترحها حاليًا، أو لا يوجد\nالنهائي: <الإجابة></message>\nاكتب السطر الأخير «النهائي: <الإجابة>» فقط عندما تكون واثقًا من الإجابة النهائية للفريق، واستبدل <الإجابة> بالإجابة فقط (دون شرح أو بدائل). اجعله داخل الرسالة، ولا تكتب شيئًا بعد </message>."
+  },
+  "shared_briefings": {
+   "en": "For this task you have also been given copies of your teammates' private briefings:\n\n{briefings}",
+   "ar": "في هذه المهمة أُعطيت أيضًا نسخًا من الإحاطات الخاصة بزملائك:\n\n{briefings}"
+  },
+  "fmt_nego": {
+   "en": "Reply in exactly this format:\n<notes>your private reasoning, written in {R}, at most 60 words; the other party never sees it</notes>\n<message>what you say to the other party, written in {C}, at most 80 words\nOFFER: <price></message>\nThe last line inside the message is your action, alone on its line: \"OFFER: <price>\" with <price> replaced by your price in digits (e.g. OFFER: 48500), or \"ACCEPT\" to accept the other party's latest offer, or \"WALK AWAY\" to end the negotiation. Write nothing after </message>.",
+   "ar": "اكتب ردك بهذا الشكل تمامًا:\n<notes>تفكيرك الخاص مكتوبًا باللغة {R}، في 60 كلمة على الأكثر، ولا يراه الطرف الآخر أبدًا</notes>\n<message>ما تقوله للطرف الآخر مكتوبًا باللغة {C}، في 80 كلمة على الأكثر\nعرض: <السعر></message>\nالسطر الأخير داخل الرسالة هو إجراؤك وحده في سطره: «عرض: <السعر>» مع استبدال <السعر> بسعرك بالأرقام (مثل عرض: 48500)، أو «قبول» لقبول آخر عرض من الطرف الآخر، أو «انسحاب» لإنهاء التفاوض. لا تكتب شيئًا بعد </message>."
+  },
+  "meeting": {
+   "en": "You are {name}, one of {n} colleagues planning a meeting. The team must choose exactly ONE time slot at which every member is free.\nPossible slots: {slots}.\nYour private schedule: you are BUSY at {busy}; you are free at every other slot.\nEach colleague knows only their own schedule. Exactly one slot works for everyone. Share information, agree on the slot, and state the final answer as the slot name.",
+   "ar": "أنت {name}، أحد {n} زملاء يخططون لاجتماع. يجب على الفريق اختيار موعد واحد فقط يكون فيه جميع الأعضاء متاحين.\nالمواعيد الممكنة: {slots}.\nجدولك الخاص: أنت مشغول في {busy}، ومتاح في جميع المواعيد الأخرى.\nكل زميل يعرف جدوله فقط. يوجد موعد واحد فقط يناسب الجميع. تبادلوا المعلومات، واتفقوا على الموعد، ثم اذكروا الإجابة النهائية باسم الموعد."
+  },
+  "incident": {
+   "en": "You are {name}, a security analyst in a {n}-person incident-response team. Exactly ONE host was compromised by exactly ONE type of attack.\nHosts in scope: {hosts}.\nPossible attack types: {types}.\nYour private evidence:\n{facts}\nThe compromised host is the only host flagged by every analyst's sensor. Other analysts hold different evidence. Share your evidence, agree on the host and the attack type, and give the final answer as: <host>, <attack type>.",
+   "ar": "أنت {name}، محلل أمني في فريق استجابة للحوادث مكوّن من {n} أعضاء. تم اختراق جهاز واحد فقط بنوع واحد فقط من الهجمات.\nالأجهزة المعنية: {hosts}.\nأنواع الهجمات المحتملة: {types}.\nأدلتك الخاصة:\n{facts}\nالجهاز المخترق هو الجهاز الوحيد الذي رصدته مستشعرات جميع المحللين. لدى بقية المحللين أدلة مختلفة. شاركوا أدلتكم، واتفقوا على الجهاز ونوع الهجوم، وقدّموا الإجابة النهائية بالشكل: <الجهاز>، <نوع الهجوم>."
+  },
+  "inc_flag": {
+   "en": "- Your sensor flagged suspicious activity on: {hosts}.",
+   "ar": "- رصد مستشعرك نشاطًا مشبوهًا على: {hosts}."
+  },
+  "inc_obs": {
+   "en": "- Logs from the compromised host: {obs}.",
+   "ar": "- سجلات الجهاز المخترق: {obs}."
+  },
+  "inc_benign": {
+   "en": "- Routine note: {obs}.",
+   "ar": "- ملاحظة اعتيادية: {obs}."
+  },
+  "nego_seller": {
+   "en": "You are {name}, selling a used car. The other party is a potential buyer. The car is listed at {list} riyals.\nYour private minimum price is {rs} riyals: never accept or offer less than this. You want to sell for as much as possible. The buyer does not know your minimum.\nNegotiate by exchanging offers. You may accept the other party's latest offer or walk away.",
+   "ar": "أنت {name}، تبيع سيارة مستعملة. الطرف الآخر مشترٍ محتمل. السعر المعلن للسيارة {list} ريال.\nالحد الأدنى الخاص بك للسعر هو {rs} ريال: لا تقبل ولا تعرض أبدًا أقل من ذلك. تريد البيع بأعلى سعر ممكن. المشتري لا يعرف حدك الأدنى.\nتفاوض بتبادل العروض. يمكنك قبول آخر عرض من الطرف الآخر أو الانسحاب."
+  },
+  "nego_buyer": {
+   "en": "You are {name}, buying a used car. The other party is the seller. The car is listed at {list} riyals.\nYour private maximum budget is {rb} riyals: never accept or offer more than this. You want to pay as little as possible. The seller does not know your budget.\nNegotiate by exchanging offers. You may accept the other party's latest offer or walk away.",
+   "ar": "أنت {name}، تشتري سيارة مستعملة. الطرف الآخر هو البائع. السعر المعلن للسيارة {list} ريال.\nميزانيتك القصوى الخاصة هي {rb} ريال: لا تقبل ولا تعرض أبدًا أكثر من ذلك. تريد الدفع بأقل سعر ممكن. البائع لا يعرف ميزانيتك.\nتفاوض بتبادل العروض. يمكنك قبول آخر عرض من الطرف الآخر أو الانسحاب."
+  },
+  "turn_first": {
+   "en": "Round 1 of {R}. No one has spoken yet. You speak first, {name}.",
+   "ar": "الجولة 1 من {R}. لم يتحدث أحد بعد. أنت تبدأ يا {name}."
+  },
+  "turn": {
+   "en": "Round {r} of {R}. Conversation so far:\n{transcript}\n\nIt is your turn, {name}.",
+   "ar": "الجولة {r} من {R}. المحادثة حتى الآن:\n{transcript}\n\nحان دورك يا {name}."
+  },
+  "last_round": {
+   "en": "This is the last round: if you have not yet given a FINAL answer, give it now.",
+   "ar": "هذه هي الجولة الأخيرة: إذا لم تقدّم إجابتك النهائية بعد، فقدّمها الآن."
+  },
+  "last_round_nego": {
+   "en": "This is the last round: accept the latest offer, make a final offer, or walk away.",
+   "ar": "هذه هي الجولة الأخيرة: اقبل آخر عرض، أو قدّم عرضًا أخيرًا، أو انسحب."
+  },
+  "plan": {
+   "en": "You are {name}, one of {n} organisers preparing a conference. The team must agree on the ORDER in which to carry out these five steps: {steps}.\nYour private information about the required order:\n{facts}\nOther organisers know other ordering rules. Exactly one order satisfies all the rules. Share your rules, work out the full order, and give the final answer on one line, listing the five steps from first to last separated by \">\".",
+   "ar": "أنت {name}، أحد {n} منظمين يحضّرون لمؤتمر. يجب على الفريق الاتفاق على ترتيب تنفيذ هذه الخطوات الخمس: {steps}.\nمعلوماتك الخاصة عن الترتيب المطلوب:\n{facts}\nلدى بقية المنظمين قواعد ترتيب أخرى. يوجد ترتيب واحد فقط يحقق جميع القواعد. شاركوا قواعدكم، واستنتجوا الترتيب الكامل، وقدّموا الإجابة النهائية في سطر واحد بذكر الخطوات الخمس من الأولى إلى الأخيرة مفصولة بالرمز «>»."
+  },
+  "plan_rule": {
+   "en": "- \"{a}\" must be done before \"{b}\".",
+   "ar": "- يجب إنجاز «{a}» قبل «{b}»."
+  },
+  "marble_db": {
+   "en": "You are {name}, one of {n} database experts diagnosing performance problems in a PostgreSQL database. Recently the database has seen performance issues.\nThe database contains these tables: {tables}.\nPossible root causes: {rcs}.\nYour assignment: investigate whether {hyp} is a root cause. These are the results of the diagnostic queries you ran:\n\n{evidence}\n\nThe other experts investigated the other root causes and hold their own results. Share your findings, discuss, and agree on the TWO most likely root causes (you can ONLY choose two). Give the final answer as the two root-cause names, e.g. FINAL: LOCK_CONTENTION, VACUUM.",
+   "ar": "أنت {name}، أحد {n} خبراء قواعد بيانات يشخّصون مشكلات أداء في قاعدة بيانات PostgreSQL. واجهت قاعدة البيانات مؤخرًا مشكلات في الأداء.\nتحتوي قاعدة البيانات على الجداول التالية: {tables}.\nالأسباب الجذرية المحتملة: {rcs}.\nمهمتك: التحقق مما إذا كان {hyp} سببًا جذريًا. هذه نتائج استعلامات التشخيص التي نفذتها:\n\n{evidence}\n\nتحقق بقية الخبراء من الأسباب الجذرية الأخرى ولديهم نتائجهم الخاصة. شاركوا نتائجكم، وناقشوها، واتفقوا على السببين الجذريين الأكثر ترجيحًا (يمكنكم اختيار سببين فقط). قدّموا الإجابة النهائية باسمَي السببين، مثل: النهائي: LOCK_CONTENTION، VACUUM."
+  },
+  "central": {
+   "en": "You are an analyst who will solve the following task ALONE. You are NOT a member of the team described below. The team has {n} members; below is the private briefing each member received (each briefing addresses its member as \"you\"). You now hold all of this information.\n\n{briefings}\n\nUse all the briefings together to work out the answer. There is no one to talk to: do not ask questions or address anyone.",
+   "ar": "أنت محلل سيحل المهمة التالية بمفرده. أنت لست عضوًا في الفريق الموصوف أدناه. يتكون الفريق من {n} أعضاء؛ وفيما يلي الإحاطة الخاصة التي تلقاها كل عضو (وكل إحاطة تخاطب صاحبها بضمير المخاطب). أصبحت كل هذه المعلومات لديك الآن.\n\n{briefings}\n\nاستخدم جميع الإحاطات معًا لاستنتاج الإجابة. لا يوجد من تتحدث معه: لا تطرح أسئلة ولا تخاطب أحدًا."
+  },
+  "central_head": {
+   "en": "=== Briefing given to team member {name} ===",
+   "ar": "=== الإحاطة المقدمة إلى عضو الفريق {name} ==="
+  },
+  "fmt_central": {
+   "en": "Reply in exactly this format:\n<notes>your reasoning, written in {L}, at most 120 words</notes>\n<message>FINAL: <answer></message>\nReplace <answer> with the answer only (no explanation, no alternatives). Write nothing after </message>.",
+   "ar": "اكتب ردك بهذا الشكل تمامًا:\n<notes>تفكيرك مكتوبًا باللغة {L}، في 120 كلمة على الأكثر</notes>\n<message>النهائي: <الإجابة></message>\nاستبدل <الإجابة> بالإجابة فقط (دون شرح أو بدائل). لا تكتب شيئًا بعد </message>."
+  },
+  "central_turn": {
+   "en": "Solve the task now and give your final answer in the required format.",
+   "ar": "حل المهمة الآن وقدّم إجابتك النهائية بالشكل المطلوب."
+  }
+ },
+ "lexicon": {
+  "LANG_NAME": {
+   "en": {
+    "en": "English",
+    "ar": "Arabic"
+   },
+   "ar": {
+    "en": "الإنجليزية",
+    "ar": "العربية"
+   }
+  },
+  "LIST_SEP": {
+   "en": ", ",
+   "ar": "، "
+  },
+  "AGENT_NAMES": {
+   "en": [
+    "Sami",
+    "Lina",
+    "Omar",
+    "Huda",
+    "Yusuf",
+    "Mona"
+   ],
+   "ar": [
+    "سامي",
+    "لينا",
+    "عمر",
+    "هدى",
+    "يوسف",
+    "منى"
+   ]
+  },
+  "DAYS": {
+   "sun": [
+    "Sunday",
+    "الأحد"
+   ],
+   "mon": [
+    "Monday",
+    "الاثنين"
+   ],
+   "tue": [
+    "Tuesday",
+    "الثلاثاء"
+   ],
+   "wed": [
+    "Wednesday",
+    "الأربعاء"
+   ],
+   "thu": [
+    "Thursday",
+    "الخميس"
+   ]
+  },
+  "PERIODS": {
+   "am": [
+    "morning",
+    "صباحًا"
+   ],
+   "pm": [
+    "evening",
+    "مساءً"
+   ]
+  },
+  "SLOTS": [
+   "sun_am",
+   "sun_pm",
+   "mon_am",
+   "mon_pm",
+   "tue_am",
+   "tue_pm",
+   "wed_am",
+   "wed_pm",
+   "thu_am",
+   "thu_pm"
+  ],
+  "HOSTS": [
+   "WS-01",
+   "WS-02",
+   "WS-03",
+   "WS-04",
+   "WS-05",
+   "WS-06",
+   "WS-07",
+   "WS-08",
+   "SRV-DB",
+   "SRV-WEB",
+   "SRV-MAIL"
+  ],
+  "ATTACKS": {
+   "brute": [
+    "brute-force password guessing",
+    "تخمين كلمات المرور بالقوة الغاشمة",
+    [
+     "brute",
+     "password guess",
+     "credential stuffing"
+    ],
+    [
+     "تخمين",
+     "القوه الغاشمه"
+    ]
+   ],
+   "exfil": [
+    "data exfiltration",
+    "تسريب البيانات",
+    [
+     "exfiltrat",
+     "data theft",
+     "data leak"
+    ],
+    [
+     "تسريب",
+     "سرقه البيانات",
+     "تهريب البيانات"
+    ]
+   ],
+   "ransom": [
+    "ransomware",
+    "برمجية الفدية",
+    [
+     "ransom"
+    ],
+    [
+     "فديه"
+    ]
+   ],
+   "phish": [
+    "phishing malware",
+    "برمجية خبيثة عبر التصيد الاحتيالي",
+    [
+     "phish"
+    ],
+    [
+     "تصيد"
+    ]
+   ]
+  },
+  "ATTACK_OBS": {
+   "brute": [
+    "hundreds of failed login attempts were followed by one successful login",
+    "سُجلت مئات من محاولات الدخول الفاشلة أعقبتها عملية دخول ناجحة"
+   ],
+   "exfil": [
+    "an unusually large outbound transfer went to an unknown external server at night",
+    "حدث نقل صادر كبير بشكل غير معتاد إلى خادم خارجي مجهول أثناء الليل"
+   ],
+   "ransom": [
+    "thousands of files were renamed with a new extension and a note demanding payment to decrypt them appeared",
+    "أُعيدت تسمية آلاف الملفات بامتداد جديد وظهرت رسالة تطالب بالدفع لفك تشفيرها"
+   ],
+   "phish": [
+    "a user opened an email attachment from a spoofed sender, after which an unknown process started",
+    "فتح مستخدم مرفق بريد إلكتروني من مرسل منتحل، ثم بدأت عملية غير معروفة"
+   ]
+  },
+  "BENIGN_OBS": [
+   [
+    "routine backup jobs completed normally",
+    "اكتملت مهام النسخ الاحتياطي الاعتيادية بشكل طبيعي"
+   ],
+   [
+    "a scheduled software update was installed on all hosts",
+    "تم تثبيت تحديث برمجي مجدول على جميع الأجهزة"
+   ],
+   [
+    "the printer service restarted after a paper jam",
+    "أُعيد تشغيل خدمة الطابعة بعد انحشار الورق"
+   ]
+  ],
+  "STEPS": {
+   "venue": [
+    "book the venue",
+    "حجز القاعة",
+    [
+     "venue"
+    ],
+    [
+     "القاعه"
+    ]
+   ],
+   "speakers": [
+    "confirm the speakers",
+    "تأكيد المتحدثين",
+    [
+     "speaker"
+    ],
+    [
+     "متحدث"
+    ]
+   ],
+   "agenda": [
+    "finalise the agenda",
+    "اعتماد جدول الأعمال",
+    [
+     "agenda"
+    ],
+    [
+     "جدول الاعمال"
+    ]
+   ],
+   "invitations": [
+    "send the invitations",
+    "إرسال الدعوات",
+    [
+     "invitation"
+    ],
+    [
+     "دعوات"
+    ]
+   ],
+   "registration": [
+    "open registration",
+    "فتح التسجيل",
+    [
+     "registration"
+    ],
+    [
+     "التسجيل"
+    ]
+   ],
+   "catering": [
+    "order the catering",
+    "طلب الضيافة",
+    [
+     "catering"
+    ],
+    [
+     "الضيافه"
+    ]
+   ],
+   "badges": [
+    "print the name badges",
+    "طباعة بطاقات الأسماء",
+    [
+     "badge"
+    ],
+    [
+     "بطاقات"
+    ]
+   ],
+   "sound": [
+    "test the sound system",
+    "اختبار نظام الصوت",
+    [
+     "sound system",
+     "audio"
+    ],
+    [
+     "نظام الصوت",
+     "الصوتي"
+    ]
+   ],
+   "certificates": [
+    "prepare the certificates",
+    "تجهيز الشهادات",
+    [
+     "certificate"
+    ],
+    [
+     "شهادات"
+    ]
+   ],
+   "program": [
+    "publish the programme",
+    "نشر البرنامج",
+    [
+     "programme",
+     "program"
+    ],
+    [
+     "البرنامج"
+    ]
+   ]
+  },
+  "RC_INFO": {
+   "INSERT_LARGE_DATA": [
+    "large-volume inserts",
+    "عمليات إدراج بيانات ضخمة",
+    [
+     "insert_large_data",
+     "insert large data"
+    ],
+    [
+     "ادراج"
+    ]
+   ],
+   "LOCK_CONTENTION": [
+    "contention on locks",
+    "تنافس على الأقفال",
+    [
+     "lock_contention",
+     "lock contention"
+    ],
+    [
+     "الاقفال",
+     "تنافس على القفل"
+    ]
+   ],
+   "VACUUM": [
+    "improper VACUUM operations",
+    "عمليات VACUUM غير ملائمة",
+    [
+     "vacuum"
+    ],
+    [
+     "التنظيف"
+    ]
+   ],
+   "REDUNDANT_INDEX": [
+    "redundant indexes",
+    "فهارس زائدة",
+    [
+     "redundant_index",
+     "redundant index"
+    ],
+    [
+     "فهارس زائده",
+     "الفهارس الزائده"
+    ]
+   ],
+   "FETCH_LARGE_DATA": [
+    "fetching large result sets",
+    "جلب كميات كبيرة من البيانات",
+    [
+     "fetch_large_data",
+     "fetch large data"
+    ],
+    [
+     "جلب"
+    ]
+   ]
+  },
+  "NEG_EN": [
+   "aren't",
+   "arent",
+   "except",
+   "exclude",
+   "excluded",
+   "excluding",
+   "instead",
+   "isn't",
+   "isnt",
+   "neither",
+   "never",
+   "no",
+   "nor",
+   "not",
+   "rather",
+   "ruled",
+   "unlikely",
+   "without"
+  ],
+  "NEG_AR": [
+   "استبعاد",
+   "باستثناء",
+   "بدلا",
+   "بدون",
+   "دون",
+   "سوي",
+   "عدا",
+   "غير",
+   "لا",
+   "لم",
+   "لن",
+   "ليس",
+   "ليسا",
+   "ليست",
+   "مستبعد",
+   "مستبعده",
+   "وغير",
+   "ولا",
+   "وليس"
+  ]
+ }
+}

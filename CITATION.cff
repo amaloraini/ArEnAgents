@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "If you use ArEnAgents, please cite the accompanying paper."
+title: "ArEnAgents: A Parallel Arabic-English Benchmark for Multi-Agent LLM Coordination"
+type: dataset
+authors:
+  - family-names: Aloraini
+    given-names: Abdulrahman
+    affiliation: "Department of Information Technology, College of Computer, Qassim University"
+    email: a.aloraini@qu.edu.sa
+  - family-names: Alrabiah
+    given-names: Raqinah
+license: CC-BY-4.0
+date-released: 2026-11-06
+repository-code: "https://github.com/amaloraini/ArEnAgents"
+preferred-citation:
+  type: article
+  title: "Multilingual Multi-Agent LLM Systems: Measuring, Diagnosing, and Mitigating the Arabic-English Coordination Gap"
+  authors:
+    - family-names: Aloraini
+      given-names: Abdulrahman
+    - family-names: Alrabiah
+      given-names: Raqinah
+  year: 2026
+  journal: "IEEE Access"
+  notes: "Under review"
