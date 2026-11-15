@@ -25,7 +25,6 @@ DATASHEET.md                 datasheet for the dataset
 CITATION.cff                 how to cite
 LICENSE                      CC BY 4.0 (ArEnAgents data)
 LICENSE-MARBLE               MIT notice for MARBLE-derived material
-SHA256SUMS                   checksums of the data files
 ```
 
 Seed ranges of the three splits are disjoint. The pre-registered confirmatory evaluation in the paper uses the **test** split only; the train and dev splits were used for development, prompt freezing and the exploratory fine-tuning experiments.
@@ -126,6 +125,4 @@ MARBLE-derived material keeps its MIT notice (`LICENSE-MARBLE`).
 
 ArEnAgents data: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) (`LICENSE`). MARBLE-derived material: MIT (`LICENSE-MARBLE`).
 
-## Citation
 
-See `CITATION.cff`.
